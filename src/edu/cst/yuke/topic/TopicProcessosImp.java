@@ -91,7 +91,7 @@ public class TopicProcessosImp {
 		StringBuffer sb = new StringBuffer();
 		try {
 			BufferedReader reader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(file), "GBK"));
+					new InputStreamReader(new FileInputStream(file), "gbk"));
 			String temp;
 			while((temp=reader.readLine())!=null){
 				sb.append(temp);
@@ -119,7 +119,11 @@ public class TopicProcessosImp {
 	
 	public String getTopic(String text){
 		String topic;
+		
 		Vector v = new Vector(WordToTopic.getInstance().DWToDT(text));
+		if (v.power(2)==0) {
+			return "ÆäËü";
+		}
 		topic = knnmodel.classify(v, Constant.KNN_k);
 		return topic;
 	}

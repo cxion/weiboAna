@@ -25,7 +25,7 @@ public class KNN {
 	
 	public void readDataFromFile(File file){
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(new 
-				BufferedInputStream(new FileInputStream(file))));){
+				BufferedInputStream(new FileInputStream(file)),"GBK"));){
 			
 			String lineString="";
 			boolean init = false;

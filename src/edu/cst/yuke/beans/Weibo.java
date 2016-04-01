@@ -1,27 +1,35 @@
 package edu.cst.yuke.beans;
+
+import java.util.Date;
+
 /**
- * Ô­Ê¼Î¢²©¶ÔÏó
- * Ä¿Ç°°´Ê±±£ÁôidºÍtextÁ½¸öÖ÷ÒªÄÚÈİ
+ * é˜ç†·îå¯°î†¼å´¥ç€µç¡…è–„
+ * é©î†¼å¢ é¸å¤‹æ¤‚æ·‡æ¿ˆæš€idéœå®¼extæ¶“ã‚„é‡œæ¶“æ˜î›¦éå‘­î†
  * @author xion_
  *
  */
 public class Weibo {
-	//Î¢²©id
-	int id;
-	//Î¢²©ÄÚÈİ
+	//å¯°î†¼å´¥mid
+	String mid;
+	//å¯°î†¼å´¥éå‘­î†
 	String text;
-	//uid ¡¢ 
-	
-	public Weibo(int id, String text) {
+	//uid éŠ†ï¿½ 
+	String uid;
+	Date date;
+	public Weibo(){
 		
-		this.id = id;
+	}
+	public Weibo(String uid,String id, String text,Date date) {
+		this.uid = uid;
+		this.mid = id;
 		this.text = text;
+		this.date = date;
 	}
-	public int getId() {
-		return id;
+	public String getId() {
+		return mid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String id) {
+		this.mid = id;
 	}
 	public String getText() {
 		return text;
@@ -29,6 +37,16 @@ public class Weibo {
 	public void setText(String text) {
 		this.text = text;
 	}
-	
-	
+	public String getUid(){
+		return this.uid;
+	}
+	public void setUid(String uid){
+		this.uid = uid;
+	}
+	public Date getDate(){
+		return this.date;
+	}
+	public void setDate(Date date){
+		this.date = date;
+	}
 }

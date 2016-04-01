@@ -1,23 +1,25 @@
 package edu.cst.yuke.beans;
 /**
- * ´¦ÀíÒÔºóµÄÎ¢²©¶ÔÏó
+ * å¤„ç†ä»¥åçš„å¾®åšå¯¹è±¡
  * 
  * @author xion_
  *
  */
 public class ProcessedWeibo {
-	//Ô­Ê¼Î¢²©¶ÔÏó
+	//åŸå§‹å¾®åšå¯¹è±¡
 	Weibo weibo;
-	//Ö÷Ìâ
+	//ä¸»é¢˜
 	String theme;
-	//Çé¸ĞÎ¬¶ÈµÃ·Ö
+	//æƒ…æ„Ÿç»´åº¦å¾—åˆ†
 	double[] emotions;
 
-	//ÊÇ·ñ½øĞĞÁË»°ÌâµÄ·ÖÀà
+	//æ˜¯å¦è¿›è¡Œäº†è¯é¢˜çš„åˆ†ç±»
 	boolean topicDone=false;
-	//ÊÇ·ñ½øĞĞÁËÇé¸ĞµÄ·ÖÀà
+	//æ˜¯å¦è¿›è¡Œäº†æƒ…æ„Ÿçš„åˆ†ç±»
 	boolean emtionDone=false;
-	
+	public ProcessedWeibo(){
+		
+	}
 	public ProcessedWeibo(Weibo weibo) {
 		
 		this.weibo = weibo;

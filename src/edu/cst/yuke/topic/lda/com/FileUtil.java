@@ -13,9 +13,9 @@ public class FileUtil {
 
 		try {
 
-			//reader = new BufferedReader(new FileReader(new File(file)));
+			reader = new BufferedReader(new FileReader(new File(file)));
             //this will cause coding problem
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
+			//reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
 			String line = null;
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);

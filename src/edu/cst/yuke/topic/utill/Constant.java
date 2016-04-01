@@ -8,7 +8,7 @@ public final class Constant {
 	
 	public final static String LDAPARAMETERFILE="ldaData/LdaParameter/LdaParameters.txt";
 	//¥Û”Ô¡œ
-    public final static String ldaDocsPath = "ldaData/corpus_splited/";
+    public final static String ldaDocsPath = "ldaData/corpus2/";
     public final static String LdaResultsPath = "ldaData/LdaResults/";
     
     public final static String STOP_WORD_PATH = "ldaData/stopword/stopword";
@@ -16,7 +16,7 @@ public final class Constant {
     /**
      * the topic - word matrix file 
      */
-    public final static String LDA_RESULT_WORDS_FILE = LdaResultsPath+"lda_150.twords";
+    public final static String LDA_RESULT_WORDS_FILE = LdaResultsPath+"lda_200.twords";
     
     public final static String WEIBO_CROPUS_PATH = "knnData/weiboCorpus";
     
@@ -31,7 +31,7 @@ public final class Constant {
     public static int topicNums=50;
     public static int topicWors=200;
     
-    public static int KNN_k = 10;
+    public static int KNN_k = 5;
     
     
     

@@ -9,7 +9,6 @@ import edu.cst.yuke.beans.Weibo;
  */
 public class TopicProcessosImpFace implements TopicProcessor {
 
-	@Override
 	public ProcessedWeibo Processor(Weibo weibo) {
 		// TODO Auto-generated method stub
 		

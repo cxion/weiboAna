@@ -32,7 +32,7 @@ public class Evaluater {
 	 * 文本    |
 	 *    文本
 	 */
-	static int[][] confusionMatrix = new int[7][7];
+	static int[][] confusionMatrix = new int[8][8];
 	
 	static List<String> topicsStr=new ArrayList();
 	static{
@@ -40,18 +40,23 @@ public class Evaluater {
 		topicsStr.add("健康");
 		topicsStr.add("教育");
 		topicsStr.add("旅游");
-		topicsStr.add("人文艺术");
 		topicsStr.add("体育");
 		topicsStr.add("IT");
+		topicsStr.add("人文艺术");
+		topicsStr.add("其它");
 	}	
 	static int right,notright;
 		
 	static String testFilePath;
 	public static void main(String[] args) {
-		/*testFilePath="knnData/weiboCorpus/";
+		testFilePath="C:\\Users\\xion_\\Desktop\\testData\\test";
 		verification();
-		printMatrix();*/
-		splitFile(new File("C:\\Users\\xion_\\Desktop\\testData\\财经.txt"));
+		printMatrix();
+		/*File file = new File("C:\\Users\\xion_\\Desktop\\testData\\");
+		for(File f:file.listFiles()){
+			splitFile(f);
+		}*/
+		//splitFile(new File("C:\\Users\\xion_\\Desktop\\testData\\教育.txt"));
 		
 	}
 	
@@ -61,9 +66,9 @@ public class Evaluater {
 			System.out.print(topic+"\t");
 		}
 		System.out.println();
-		for(int i = 0;i<7;i++){
+		for(int i = 0;i<8;i++){
 			System.out.print(topicsStr.get(i)+"\t");
-			for(int j = 0;j<7;j++){
+			for(int j = 0;j<8;j++){
 				System.out.print(confusionMatrix[i][j]+"\t");
 			}
 			System.out.println("\n");
@@ -80,7 +85,8 @@ public class Evaluater {
 				String classifyResult = classify(weibofile);
 			j=topicsStr.indexOf(classifyResult);
 			if(i==-1 || j==-1){
-				System.err.println("不是你的文件夹名字有问题，就是你的分类的结果名字有问题");
+				System.err.println(classifyResult+" 不是你的文件夹名字有问题，就是你的分类的结果名字有问题");
+				
 				i=0;
 				j=0;
 				continue;
@@ -98,8 +104,9 @@ public class Evaluater {
 		}
 	}
 	private static String classify(File file){
+		String text = readFile(file);
+		String topic = edu.cst.yuke.topic.TopicProcessosImp.getInstance().getTopic(text);
 		
-		String topic = TopicProcessosImp.getInstance().getTopic(readFile(file));
 		return topic;
 	}
 	
@@ -129,7 +136,7 @@ public class Evaluater {
 			System.out.println("读写错误");
 			return null;
 		}
-		
+		//System.out.println(sb.toString());
 		return sb.toString();
 	}
 	
@@ -138,29 +145,32 @@ public class Evaluater {
 			String path = file.getParent()+"\\"+file.getName().substring(0, file.getName().indexOf("."));
 			File makepaht= new File(path);
 			makepaht.mkdirs();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"GBK" ));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8" ));
 			String readerStr;
 			int i = 0;
 			BufferedWriter writer;
 			StringBuffer sb = new StringBuffer();
 			while((readerStr=reader.readLine())!=null){
-				if (!readerStr.trim().equals("")) {
+				
+				/*if (!readerStr.trim().equals("")) {
 					sb.append(readerStr);
-				}else {
+				}else {*/
 					i++;
-					writer= new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path+"\\"+i+".txt")),"utf-8"));
-					writer.write(sb.toString());
+					writer= new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path+"\\"+i+".txt")),"GBK"));
+					//writer.write(sb.toString());
+					writer.write(readerStr);
 					writer.flush();
 					System.out.println(path+"\\"+i+".txt");
-				}
+					//sb = new StringBuffer();
+				//}
 				
+					writer.close();
 			}
-			i++;
-			writer= new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path+"/"+i)),"utf-8"));
-			writer.write(sb.toString());
-			writer.flush();
+			//i++;
+			//writer= new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path+"/"+i)),"utf-8"));
+			//writer.write(sb.toString());
+			//writer.flush();
 			reader.close();
-			writer.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

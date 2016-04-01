@@ -62,9 +62,7 @@ public class WordToTopic {
 			if (topicProbilitiesAll==null) {
 				continue;
 			}
-			
-			
-			
+
 			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			//System.out.println(needWord);
 			String[] topicProbilities = topicProbilitiesAll.split(";");
@@ -80,7 +78,7 @@ public class WordToTopic {
 	private void loadTopic(String filePath){
 		BufferedReader br;
 		try {
-			 br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath))));
+			 br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)),"GBK"));
 			 String line;
 			 while((line = br.readLine())!=null){
 				 String[] cuts = line.split("\t");
